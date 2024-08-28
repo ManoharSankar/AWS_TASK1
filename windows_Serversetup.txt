@@ -1,0 +1,35 @@
+To create a Windows virtual machine (VM) on AWS and connect to it using Remote Desktop Protocol (RDP), follow these steps:
+
+Step 1: Set Up Your AWS Account
+Log in to AWS Management Console: If you don't have an AWS account, sign up here.
+Navigate to EC2 Dashboard: Once logged in, go to the EC2 Dashboard by selecting "EC2" from the services menu.
+Step 2: Launch a Windows VM
+Launch Instance: Click the "Launch Instance" button.
+Choose AMI: Select a Microsoft Windows Server AMI (Amazon Machine Image) from the list. The AMIs could be Windows Server 2019 Base, Windows Server 2022 Base, etc.
+Choose Instance Type: Choose an instance type that fits your needs, such as t2.micro or t3.micro for low-cost options.
+Configure Instance Details:
+Leave the defaults or adjust based on your requirements (like the number of instances, network settings, etc.).
+Make sure you are in a VPC (Virtual Private Cloud) that allows internet access if you plan to connect using RDP.
+Add Storage: Default storage is usually sufficient, but you can add more if needed.
+Add Tags: (Optional) Add tags to identify your instance.
+Configure Security Group:
+Create a new security group or select an existing one.
+Ensure that you have an inbound rule allowing RDP traffic (TCP port 3389) from your IP address (or a range of IPs).
+Review and Launch: Review your settings, and click "Launch".
+Create/Select Key Pair: Choose an existing key pair or create a new one. This key pair will be used to decrypt the administrator password. Make sure to download and securely save the private key file (.pem).
+Step 3: Connect to Your Windows VM
+Wait for Initialization: Wait for your instance to launch and its status checks to pass (it should show "running").
+Retrieve Windows Password:
+Select the instance from the EC2 dashboard.
+Click on "Connect" > "RDP client" > "Get Password".
+Upload the key pair .pem file to decrypt the administrator password.
+Use RDP to Connect:
+Open Remote Desktop Connection on your local machine (mstsc command on Windows).
+Enter the public DNS or IP address of your instance.
+Use the retrieved username (Administrator) and decrypted password to connect.
+Step 4: Open CMD in Windows and Share System Info
+Open Command Prompt:
+After connecting via RDP, click the Start button.
+Type cmd and press Enter to open the Command Prompt.
+Retrieve System Info:
+Type systeminfo in the Command Prompt and press Enter. This will display detailed system information such as OS version, manufacturer, network details, etc.
